@@ -1,0 +1,18 @@
+void setup() {
+  DDRB |= (1 << DDB5); // DDRB is the Data Direction Register for Port B. |= means "bitwise OR and assign". (1 << DDB5) shifts the number 1 left by DDB5 positions,
+  // so if DDB5 = 5, this makes 0b00100000.
+}
+
+void loop() {
+
+  PORTB |= (1 << PB5);   // PORTB is the Data Register for Port B. |= sets a bit to 1, leaving other bits unchanged.(1 << PB5) creates a mask with only bit 5 = 1.
+  // (1 << PB5) creates a mask with only bit 5 = 1.
+  
+  // delay(500) pauses the CPU for 500 milliseconds.
+  delay(500);
+  
+  PORTB &= ~(1 << PB5); // &=~ means "bitwise AND with the inverse (NOT)". (1 << PB5) is again 0b00100000, but ~ flips it to 0b11011111.
+  // PORTB &= ~(1 << PB5) clears bit 5 of PORTB (sets it to 0), while leaving the other bits as they are (LED OFF).
+  
+  delay(500);
+}
